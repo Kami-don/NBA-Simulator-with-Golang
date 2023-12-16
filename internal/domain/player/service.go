@@ -10,13 +10,13 @@ type Service struct {
 	repo RepositoryI
 }
 
-func NewService(repo RepositoryI) *Service {
-	return &Service{
+func NewService(repo RepositoryI) Service {
+	return Service{
 		repo: repo,
 	}
 }
 
-func (s *Service) Get(ctx context.Context, id string) (*entities.Player, error) {
+func (s *Service) Get(ctx context.Context, id int) (*entities.Player, error) {
 	return s.repo.Get(ctx, id)
 }
 
@@ -32,6 +32,10 @@ func (s *Service) Update(ctx context.Context, p *entities.Player) error {
 	return s.repo.Update(ctx, p)
 }
 
-func (s *Service) Delete(ctx context.Context, id string) error {
+func (s *Service) Delete(ctx context.Context, id int) error {
 	return s.repo.Delete(ctx, id)
+}
+
+func (s *Service) GetPlayersByTeamID(ctx context.Context, teamID int) ([]*entities.Player, error) {
+	return s.repo.GetPlayersByTeamID(ctx, teamID)
 }

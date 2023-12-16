@@ -10,10 +10,10 @@ import (
 
 type RepositoryI interface {
 	GetAll(tx context.Context) ([]*entities.Game, error)
-	Get(tx context.Context, id string) (*entities.Game, error)
+	Get(tx context.Context, id int) (*entities.Game, error)
 	Create(tx context.Context, g *entities.Game) error
 	Update(tx context.Context, g *entities.Game) error
-	Delete(tx context.Context, id string) error
+	Delete(tx context.Context, id int) error
 }
 
 type Repository struct {
@@ -26,19 +26,20 @@ func NewGameRepository(collection *mongo.Collection) *Repository {
 
 func (r *Repository) GetAll(tx context.Context) ([]*entities.Game, error) {
 	var games []*entities.Game
-	cursor, err := r.collection.Find(tx, nil)
+	cursor, err := r.collection.Find(tx, bson.M{})
 	if err != nil {
 		return nil, err
 	}
-	if err = cursor.All(tx, &games); err != nil {
+	err = cursor.All(tx, &games)
+	if err != nil {
 		return nil, err
 	}
 	return games, nil
 }
 
-func (r *Repository) Get(tx context.Context, id string) (*entities.Game, error) {
+func (r *Repository) Get(tx context.Context, id int) (*entities.Game, error) {
 	var game *entities.Game
-	err := r.collection.FindOne(tx, nil).Decode(&game)
+	err := r.collection.FindOne(tx, bson.M{"_id": id}).Decode(&game)
 	if err != nil {
 		return nil, err
 	}
@@ -54,15 +55,15 @@ func (r *Repository) Create(tx context.Context, g *entities.Game) error {
 }
 
 func (r *Repository) Update(tx context.Context, g *entities.Game) error {
-	_, err := r.collection.UpdateOne(tx, nil, bson.M{"$set": g})
+	_, err := r.collection.UpdateOne(tx, bson.M{"_id": g.ID}, bson.M{"$set": g})
 	if err != nil {
 		return err
 	}
 	return nil
 }
 
-func (r *Repository) Delete(tx context.Context, id string) error {
-	_, err := r.collection.DeleteOne(tx, nil)
+func (r *Repository) Delete(tx context.Context, id int) error {
+	_, err := r.collection.DeleteOne(tx, bson.M{"_id": id})
 	if err != nil {
 		return err
 	}

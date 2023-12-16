@@ -8,7 +8,12 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/Furkan-Gulsen/NBA-Simulator-with-Golang/cmd/app/simulation"
 	"github.com/Furkan-Gulsen/NBA-Simulator-with-Golang/config"
+	"github.com/Furkan-Gulsen/NBA-Simulator-with-Golang/internal/domain/game"
+	"github.com/Furkan-Gulsen/NBA-Simulator-with-Golang/internal/domain/player"
+	playergame "github.com/Furkan-Gulsen/NBA-Simulator-with-Golang/internal/domain/player_game"
+	"github.com/Furkan-Gulsen/NBA-Simulator-with-Golang/internal/domain/team"
 	database "github.com/Furkan-Gulsen/NBA-Simulator-with-Golang/internal/infra/db"
 	"github.com/Furkan-Gulsen/NBA-Simulator-with-Golang/internal/infra/shutdown"
 	"github.com/gin-gonic/gin"
@@ -54,6 +59,33 @@ func initRouter(db *database.Database, dbName string) *gin.Engine {
 			"message": "pong",
 		})
 	})
+
+	gameRepo := game.NewGameRepository(db.Collection(dbName, "games"))
+	gameService := game.NewService(gameRepo)
+
+	playerRepo := player.NewPlayerRepository(db.Collection(dbName, "players"))
+	playerService := player.NewService(playerRepo)
+
+	teamRepo := team.NewTeamRepository(db.Collection(dbName, "teams"))
+	teamService := team.NewService(teamRepo)
+
+	playerGameRepo := playergame.NewPlayerGameRepository(db.Collection(dbName, "player_games"))
+	playerGameService := playergame.NewService(playerGameRepo)
+
+	r.GET("/games", func(c *gin.Context) {
+		games, err := gameService.GetAll(context.Background())
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"error": err,
+			})
+			return
+		}
+		c.JSON(http.StatusOK, games)
+	})
+
+	// simulation
+	simulate := simulation.NewSimulate(context.Background(), db, gameService, playerService, teamService, playerGameService)
+	go simulate.Run()
 
 	return r
 }

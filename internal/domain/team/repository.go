@@ -10,10 +10,10 @@ import (
 
 type RepositoryI interface {
 	GetAll(tx context.Context) ([]*entities.Team, error)
-	Get(tx context.Context, id string) (*entities.Team, error)
+	Get(tx context.Context, id int) (*entities.Team, error)
 	Create(tx context.Context, t *entities.Team) error
 	Update(tx context.Context, t *entities.Team) error
-	Delete(tx context.Context, id string) error
+	Delete(tx context.Context, id int) error
 }
 
 type Repository struct {
@@ -36,7 +36,7 @@ func (r *Repository) GetAll(tx context.Context) ([]*entities.Team, error) {
 	return teams, nil
 }
 
-func (r *Repository) Get(tx context.Context, id string) (*entities.Team, error) {
+func (r *Repository) Get(tx context.Context, id int) (*entities.Team, error) {
 	var team *entities.Team
 	err := r.collection.FindOne(tx, nil).Decode(&team)
 	if err != nil {
@@ -61,7 +61,7 @@ func (r *Repository) Update(tx context.Context, t *entities.Team) error {
 	return nil
 }
 
-func (r *Repository) Delete(tx context.Context, id string) error {
+func (r *Repository) Delete(tx context.Context, id int) error {
 	_, err := r.collection.DeleteOne(tx, nil)
 	if err != nil {
 		return err

@@ -1,0 +1,574 @@
+{
+	"teams": [
+		{
+			"id": 1,
+			"name": "Team A",
+			"abbreviation": "TA",
+			"players": [
+				{
+					"id": 1,
+					"name": "John Doe",
+					"team_id": 1
+				},
+				{
+					"id": 2,
+					"name": "Jane Smith",
+					"team_id": 1
+				},
+				{
+					"id": 3,
+					"name": "Mike Johnson",
+					"team_id": 1
+				},
+				{
+					"id": 4,
+					"name": "Sarah Wilson",
+					"team_id": 1
+				},
+				{
+					"id": 5,
+					"name": "David Lee",
+					"team_id": 1
+				},
+				{
+					"id": 6,
+					"name": "Emily Brown",
+					"team_id": 1
+				},
+				{
+					"id": 7,
+					"name": "Daniel Davis",
+					"team_id": 1
+				},
+				{
+					"id": 8,
+					"name": "Olivia Martinez",
+					"team_id": 1
+				},
+				{
+					"id": 9,
+					"name": "Joseph Taylor",
+					"team_id": 1
+				},
+				{
+					"id": 10,
+					"name": "Sophia Anderson",
+					"team_id": 1
+				}
+			]
+		},
+		{
+			"id": 2,
+			"name": "Team B",
+			"abbreviation": "TB",
+			"players": [
+				{
+					"id": 11,
+					"name": "William Johnson",
+					"team_id": 2
+				},
+				{
+					"id": 12,
+					"name": "Emma Wilson",
+					"team_id": 2
+				},
+				{
+					"id": 13,
+					"name": "James Lee",
+					"team_id": 2
+				},
+				{
+					"id": 14,
+					"name": "Olivia Brown",
+					"team_id": 2
+				},
+				{
+					"id": 15,
+					"name": "Benjamin Davis",
+					"team_id": 2
+				},
+				{
+					"id": 16,
+					"name": "Ava Martinez",
+					"team_id": 2
+				},
+				{
+					"id": 17,
+					"name": "Christopher Taylor",
+					"team_id": 2
+				},
+				{
+					"id": 18,
+					"name": "Mia Anderson",
+					"team_id": 2
+				},
+				{
+					"id": 19,
+					"name": "David Smith",
+					"team_id": 2
+				},
+				{
+					"id": 20,
+					"name": "Sophia Davis",
+					"team_id": 2
+				}
+			]
+		},
+		{
+			"id": 3,
+			"name": "Team C",
+			"abbreviation": "TC",
+			"players": [
+				{
+					"id": 21,
+					"name": "Ethan Wilson",
+					"team_id": 3
+				},
+				{
+					"id": 22,
+					"name": "Sophia Johnson",
+					"team_id": 3
+				},
+				{
+					"id": 23,
+					"name": "Mason Lee",
+					"team_id": 3
+				},
+				{
+					"id": 24,
+					"name": "Ava Wilson",
+					"team_id": 3
+				},
+				{
+					"id": 25,
+					"name": "Liam Davis",
+					"team_id": 3
+				},
+				{
+					"id": 26,
+					"name": "Isabella Martinez",
+					"team_id": 3
+				},
+				{
+					"id": 27,
+					"name": "Noah Taylor",
+					"team_id": 3
+				},
+				{
+					"id": 28,
+					"name": "Olivia Smith",
+					"team_id": 3
+				},
+				{
+					"id": 29,
+					"name": "Logan Brown",
+					"team_id": 3
+				},
+				{
+					"id": 30,
+					"name": "Emma Anderson",
+					"team_id": 3
+				}
+			]
+		},
+		{
+			"id": 4,
+			"name": "Team D",
+			"abbreviation": "TD",
+			"players": [
+				{
+					"id": 31,
+					"name": "Liam Johnson",
+					"team_id": 4
+				},
+				{
+					"id": 32,
+					"name": "Ava Wilson",
+					"team_id": 4
+				},
+				{
+					"id": 33,
+					"name": "Lucas Lee",
+					"team_id": 4
+				},
+				{
+					"id": 34,
+					"name": "Mia Davis",
+					"team_id": 4
+				},
+				{
+					"id": 35,
+					"name": "Elijah Davis",
+					"team_id": 4
+				},
+				{
+					"id": 36,
+					"name": "Avery Martinez",
+					"team_id": 4
+				},
+				{
+					"id": 37,
+					"name": "Oliver Taylor",
+					"team_id": 4
+				},
+				{
+					"id": 38,
+					"name": "Charlotte Smith",
+					"team_id": 4
+				},
+				{
+					"id": 39,
+					"name": "Ethan Brown",
+					"team_id": 4
+				},
+				{
+					"id": 40,
+					"name": "Harper Anderson",
+					"team_id": 4
+				}
+			]
+		},
+		{
+			"id": 5,
+			"name": "Team E",
+			"abbreviation": "TE",
+			"players": [
+				{
+					"id": 41,
+					"name": "Ella Wilson",
+					"team_id": 5
+				},
+				{
+					"id": 42,
+					"name": "Jackson Johnson",
+					"team_id": 5
+				},
+				{
+					"id": 43,
+					"name": "Lucas Lee",
+					"team_id": 5
+				},
+				{
+					"id": 44,
+					"name": "Mia Davis",
+					"team_id": 5
+				},
+				{
+					"id": 45,
+					"name": "Elijah Davis",
+					"team_id": 5
+				},
+				{
+					"id": 46,
+					"name": "Avery Martinez",
+					"team_id": 5
+				},
+				{
+					"id": 47,
+					"name": "Oliver Taylor",
+					"team_id": 5
+				},
+				{
+					"id": 48,
+					"name": "Charlotte Smith",
+					"team_id": 5
+				},
+				{
+					"id": 49,
+					"name": "Ethan Brown",
+					"team_id": 5
+				},
+				{
+					"id": 50,
+					"name": "Harper Anderson",
+					"team_id": 5
+				}
+			]
+		},
+		{
+			"id": 6,
+			"name": "Team F",
+			"abbreviation": "TF",
+			"players": [
+				{
+					"id": 51,
+					"name": "Oliver Wilson",
+					"team_id": 6
+				},
+				{
+					"id": 52,
+					"name": "Amelia Johnson",
+					"team_id": 6
+				},
+				{
+					"id": 53,
+					"name": "Lucas Lee",
+					"team_id": 6
+				},
+				{
+					"id": 54,
+					"name": "Sophia Davis",
+					"team_id": 6
+				},
+				{
+					"id": 55,
+					"name": "Elijah Davis",
+					"team_id": 6
+				},
+				{
+					"id": 56,
+					"name": "Avery Martinez",
+					"team_id": 6
+				},
+				{
+					"id": 57,
+					"name": "Oliver Taylor",
+					"team_id": 6
+				},
+				{
+					"id": 58,
+					"name": "Charlotte Smith",
+					"team_id": 6
+				},
+				{
+					"id": 59,
+					"name": "Ethan Brown",
+					"team_id": 6
+				},
+				{
+					"id": 60,
+					"name": "Harper Anderson",
+					"team_id": 6
+				}
+			]
+		},
+		{
+			"id": 7,
+			"name": "Team G",
+			"abbreviation": "TG",
+			"players": [
+				{
+					"id": 61,
+					"name": "Liam Wilson",
+					"team_id": 7
+				},
+				{
+					"id": 62,
+					"name": "Olivia Johnson",
+					"team_id": 7
+				},
+				{
+					"id": 63,
+					"name": "Lucas Lee",
+					"team_id": 7
+				},
+				{
+					"id": 64,
+					"name": "Emma Davis",
+					"team_id": 7
+				},
+				{
+					"id": 65,
+					"name": "Elijah Davis",
+					"team_id": 7
+				},
+				{
+					"id": 66,
+					"name": "Avery Martinez",
+					"team_id": 7
+				},
+				{
+					"id": 67,
+					"name": "Oliver Taylor",
+					"team_id": 7
+				},
+				{
+					"id": 68,
+					"name": "Charlotte Smith",
+					"team_id": 7
+				},
+				{
+					"id": 69,
+					"name": "Ethan Brown",
+					"team_id": 7
+				},
+				{
+					"id": 70,
+					"name": "Harper Anderson",
+					"team_id": 7
+				}
+			]
+		},
+		{
+			"id": 8,
+			"name": "Team H",
+			"abbreviation": "TH",
+			"players": [
+				{
+					"id": 71,
+					"name": "Noah Wilson",
+					"team_id": 8
+				},
+				{
+					"id": 72,
+					"name": "Sophia Johnson",
+					"team_id": 8
+				},
+				{
+					"id": 73,
+					"name": "Lucas Lee",
+					"team_id": 8
+				},
+				{
+					"id": 74,
+					"name": "Olivia Davis",
+					"team_id": 8
+				},
+				{
+					"id": 75,
+					"name": "Elijah Davis",
+					"team_id": 8
+				},
+				{
+					"id": 76,
+					"name": "Avery Martinez",
+					"team_id": 8
+				},
+				{
+					"id": 77,
+					"name": "Oliver Taylor",
+					"team_id": 8
+				},
+				{
+					"id": 78,
+					"name": "Charlotte Smith",
+					"team_id": 8
+				},
+				{
+					"id": 79,
+					"name": "Ethan Brown",
+					"team_id": 8
+				},
+				{
+					"id": 80,
+					"name": "Harper Anderson",
+					"team_id": 8
+				}
+			]
+		},
+		{
+			"id": 9,
+			"name": "Team I",
+			"abbreviation": "TI",
+			"players": [
+				{
+					"id": 81,
+					"name": "Liam Wilson",
+					"team_id": 9
+				},
+				{
+					"id": 82,
+					"name": "Olivia Johnson",
+					"team_id": 9
+				},
+				{
+					"id": 83,
+					"name": "Lucas Lee",
+					"team_id": 9
+				},
+				{
+					"id": 84,
+					"name": "Emma Davis",
+					"team_id": 9
+				},
+				{
+					"id": 85,
+					"name": "Elijah Davis",
+					"team_id": 9
+				},
+				{
+					"id": 86,
+					"name": "Avery Martinez",
+					"team_id": 9
+				},
+				{
+					"id": 87,
+					"name": "Oliver Taylor",
+					"team_id": 9
+				},
+				{
+					"id": 88,
+					"name": "Charlotte Smith",
+					"team_id": 9
+				},
+				{
+					"id": 89,
+					"name": "Ethan Brown",
+					"team_id": 9
+				},
+				{
+					"id": 90,
+					"name": "Harper Anderson",
+					"team_id": 9
+				}
+			]
+		},
+		{
+			"id": 10,
+			"name": "Team J",
+			"abbreviation": "TJ",
+			"players": [
+				{
+					"id": 91,
+					"name": "Noah Wilson",
+					"team_id": 10
+				},
+				{
+					"id": 92,
+					"name": "Sophia Johnson",
+					"team_id": 10
+				},
+				{
+					"id": 93,
+					"name": "Lucas Lee",
+					"team_id": 10
+				},
+				{
+					"id": 94,
+					"name": "Olivia Davis",
+					"team_id": 10
+				},
+				{
+					"id": 95,
+					"name": "Elijah Davis",
+					"team_id": 10
+				},
+				{
+					"id": 96,
+					"name": "Avery Martinez",
+					"team_id": 10
+				},
+				{
+					"id": 97,
+					"name": "Oliver Taylor",
+					"team_id": 10
+				},
+				{
+					"id": 98,
+					"name": "Charlotte Smith",
+					"team_id": 10
+				},
+				{
+					"id": 99,
+					"name": "Ethan Brown",
+					"team_id": 10
+				},
+				{
+					"id": 100,
+					"name": "Harper Anderson",
+					"team_id": 10
+				}
+			]
+		}
+	]
+}

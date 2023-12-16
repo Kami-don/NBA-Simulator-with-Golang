@@ -10,33 +10,37 @@ type Service struct {
 	repo RepositoryI
 }
 
-func NewService(repo RepositoryI) *Service {
-	return &Service{
+func NewService(repo RepositoryI) Service {
+	return Service{
 		repo: repo,
 	}
 }
 
-func (s *Service) Get(ctx context.Context, id string) (*entities.PlayerGameInfo, error) {
+func (s *Service) Get(ctx context.Context, id int) (*entities.PlayerStats, error) {
 	return s.repo.Get(ctx, id)
 }
 
-func (s *Service) GetAll(ctx context.Context) ([]*entities.PlayerGameInfo, error) {
+func (s *Service) GetAll(ctx context.Context) ([]*entities.PlayerStats, error) {
 	return s.repo.GetAll(ctx)
 }
 
-func (s *Service) Create(ctx context.Context, p *entities.PlayerGameInfo) error {
+func (s *Service) Create(ctx context.Context, p *entities.PlayerStats) error {
 	return s.repo.Create(ctx, p)
 }
 
-func (s *Service) Update(ctx context.Context, p *entities.PlayerGameInfo) error {
+func (s *Service) Update(ctx context.Context, p *entities.PlayerStats) error {
 	return s.repo.Update(ctx, p)
 }
 
-func (s *Service) Delete(ctx context.Context, id string) error {
+func (s *Service) Delete(ctx context.Context, id int) error {
 
 	return s.repo.Delete(ctx, id)
 }
 
-func (s *Service) GetAssistLeaders(ctx context.Context) (*entities.PlayerGameInfo, error) {
-	return s.repo.GetAssistLeaders(ctx)
+func (s *Service) GetAssistLeader(ctx context.Context) (*entities.PlayerStats, error) {
+	return s.repo.GetAssistLeader(ctx)
+}
+
+func (s *Service) GetPlayersByGameID(ctx context.Context, teamID int) ([]*entities.PlayerStats, error) {
+	return s.repo.GetPlayersByGameID(ctx, teamID)
 }
