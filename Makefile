@@ -23,7 +23,7 @@ clean:
 
 up:
 	@echo "Running docker-compose..."
-	docker-compose up -d
+	docker-compose up -d --build
 
 down:
 	@echo "Stopping docker-compose..."

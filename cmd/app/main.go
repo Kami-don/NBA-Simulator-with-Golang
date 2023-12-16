@@ -44,10 +44,31 @@ func loadConfiguration() *config.Config {
 	}
 }
 
+func initDatabase(cfg *config.Config) *database.Database {
+	database, err := database.Connect(context.Background(), fmt.Sprintf("mongodb://%s:%s", cfg.MongoHostname, cfg.MongoPort))
+	if err != nil {
+		log.Fatalf("Failed to connect to database: %s", err)
+	}
+	return database
+}
+
+func startServer(cfg *config.Config, router *gin.Engine) {
+	server := &http.Server{
+		Addr:    fmt.Sprintf("%s:%s", cfg.ServerAddress, cfg.ServerPort),
+		Handler: router,
+	}
+
+	go shutdown.Graceful(server, 5*time.Second)
+
+	if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+		log.Fatalf("Failed to start server: %s", err)
+	}
+}
+
 func initRouter(db *database.Database, dbName string) *gin.Engine {
 	r := gin.New()
 	r.Use(gin.Logger())
-
+	r.LoadHTMLGlob("templates/*")
 	r.Use(gin.Recovery())
 	r.Use(func(c *gin.Context) {
 		c.Set("db", db)
@@ -84,31 +105,10 @@ func initRouter(db *database.Database, dbName string) *gin.Engine {
 	})
 
 	// simulation
-	simulate := simulation.NewSimulate(context.Background(), db, gameService, playerService, teamService, playerGameService)
+	simulate := simulation.NewSimulate(context.Background(), db, *gameService, playerService, teamService, playerGameService)
 	go simulate.Run()
 
 	return r
-}
-
-func initDatabase(cfg *config.Config) *database.Database {
-	database, err := database.Connect(context.Background(), fmt.Sprintf("mongodb://%s:%s", cfg.MongoHostname, cfg.MongoPort))
-	if err != nil {
-		log.Fatalf("Failed to connect to database: %s", err)
-	}
-	return database
-}
-
-func startServer(cfg *config.Config, router *gin.Engine) {
-	server := &http.Server{
-		Addr:    fmt.Sprintf("%s:%s", cfg.ServerAddress, cfg.ServerPort),
-		Handler: router,
-	}
-
-	go shutdown.Graceful(server, 5*time.Second)
-
-	if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-		log.Fatalf("Failed to start server: %s", err)
-	}
 }
 
 func main() {

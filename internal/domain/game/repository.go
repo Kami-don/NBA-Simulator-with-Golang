@@ -9,11 +9,11 @@ import (
 )
 
 type RepositoryI interface {
-	GetAll(tx context.Context) ([]*entities.Game, error)
-	Get(tx context.Context, id int) (*entities.Game, error)
-	Create(tx context.Context, g *entities.Game) error
-	Update(tx context.Context, g *entities.Game) error
-	Delete(tx context.Context, id int) error
+	GetAll(ctx context.Context) ([]*entities.Game, error)
+	Get(ctx context.Context, id int) (*entities.Game, error)
+	Create(ctx context.Context, g *entities.Game) error
+	Update(ctx context.Context, g *entities.Game) error
+	Delete(ctx context.Context, id int) error
 }
 
 type Repository struct {

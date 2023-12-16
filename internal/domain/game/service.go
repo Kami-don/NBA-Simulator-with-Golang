@@ -10,28 +10,28 @@ type Service struct {
 	repo RepositoryI
 }
 
-func NewService(repo RepositoryI) Service {
-	return Service{
+func NewService(repo RepositoryI) *Service {
+	return &Service{
 		repo: repo,
 	}
 }
 
-func (s *Service) GetAll(tx context.Context) ([]*entities.Game, error) {
-	return s.repo.GetAll(tx)
+func (s *Service) GetAll(ctx context.Context) ([]*entities.Game, error) {
+	return s.repo.GetAll(ctx)
 }
 
-func (s *Service) Get(tx context.Context, id int) (*entities.Game, error) {
-	return s.repo.Get(tx, id)
+func (s *Service) Get(ctx context.Context, id int) (*entities.Game, error) {
+	return s.repo.Get(ctx, id)
 }
 
-func (s *Service) Create(tx context.Context, g *entities.Game) error {
-	return s.repo.Create(tx, g)
+func (s *Service) Create(ctx context.Context, g *entities.Game) error {
+	return s.repo.Create(ctx, g)
 }
 
-func (s *Service) Update(tx context.Context, g *entities.Game) error {
-	return s.repo.Update(tx, g)
+func (s *Service) Update(ctx context.Context, g *entities.Game) error {
+	return s.repo.Update(ctx, g)
 }
 
-func (s *Service) Delete(tx context.Context, id int) error {
-	return s.repo.Delete(tx, id)
+func (s *Service) Delete(ctx context.Context, id int) error {
+	return s.repo.Delete(ctx, id)
 }

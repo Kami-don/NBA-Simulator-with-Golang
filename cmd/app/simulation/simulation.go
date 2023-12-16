@@ -96,6 +96,8 @@ func (s *Simulate) simulateMatch(wg *sync.WaitGroup, matchChan chan<- MatchInfo,
 
 		if matchInfo.ElapsedTime >= duration {
 			matchChan <- matchInfo
+			game.IsFinished = true
+			s.gameService.Update(s.ctx, game)
 			return
 		} else {
 			s.UpdateGameDB(matchInfo, game, score)

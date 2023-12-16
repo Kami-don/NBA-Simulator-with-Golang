@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Scores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ .title }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Away</th>
+                <th>Home</th>
+                <th>Score (Away)</th>
+                <th>Score (Home)</th>
+                <th>Attack Count (Away)</th>
+                <th>Attack Count (Home)</th>
+                <th>Elapsed Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ range .games}}
+            <tr>
+                <td>{{ .Away }}</td>
+                <td>{{ .Home }}</td>
+                <td>{{ .AwayScore }}</td>
+                <td>{{ .HomeScore }}</td>
+                <td>{{ .AwayAttackCount }}</td>
+                <td>{{ .HomeAttackCount }}</td>
+                <td>{{ .ElapsedTime }}</td>
+            </tr>
+            {{ end}}
+        </tbody>
+    </table>
+</body>
+</html>
