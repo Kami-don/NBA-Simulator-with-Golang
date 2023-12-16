@@ -6,7 +6,7 @@ import (
 
 	"github.com/Furkan-Gulsen/NBA-Simulator-with-Golang/internal/entities"
 	"github.com/Furkan-Gulsen/NBA-Simulator-with-Golang/internal/infra/mock"
-	"github.com/stretchr/testify/assert"
+	"github.com/go-playground/assert/v2"
 )
 
 func TestPlayerUnit(t *testing.T) {
