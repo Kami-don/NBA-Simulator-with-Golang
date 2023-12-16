@@ -16,24 +16,24 @@ type RepositoryI interface {
 }
 
 type MockPlayerRepository struct {
-	players map[int64]*entities.Player
+	players map[string]*entities.Player
 }
 
 func NewMockPlayerRepository() *MockPlayerRepository {
 	return &MockPlayerRepository{
-		players: map[int64]*entities.Player{
-			11111: {
-				ID:   11111,
+		players: map[string]*entities.Player{
+			"11111": {
+				ID:   "11111",
 				Name: "Player1",
 				Team: "TeamA",
 			},
-			22222: {
-				ID:   22222,
+			"22222": {
+				ID:   "22222",
 				Name: "Player2",
 				Team: "TeamB",
 			},
-			33333: {
-				ID:   33333,
+			"33333": {
+				ID:   "33333",
 				Name: "Player3",
 				Team: "TeamA",
 			},
@@ -41,7 +41,7 @@ func NewMockPlayerRepository() *MockPlayerRepository {
 	}
 }
 
-func (m *MockPlayerRepository) Get(ctx context.Context, id int64) (*entities.Player, error) {
+func (m *MockPlayerRepository) Get(ctx context.Context, id string) (*entities.Player, error) {
 	if player, exists := m.players[id]; exists {
 		return player, nil
 	}
@@ -72,7 +72,7 @@ func (m *MockPlayerRepository) Update(ctx context.Context, p *entities.Player) e
 	return nil
 }
 
-func (m *MockPlayerRepository) Delete(ctx context.Context, id int64) error {
+func (m *MockPlayerRepository) Delete(ctx context.Context, id string) error {
 	if _, exists := m.players[id]; !exists {
 		return errors.New("player not found")
 	}
