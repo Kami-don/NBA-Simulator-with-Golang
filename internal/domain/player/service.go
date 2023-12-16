@@ -16,7 +16,7 @@ func NewService(repo RepositoryI) *Service {
 	}
 }
 
-func (s *Service) Get(ctx context.Context, id int64) (*entities.Player, error) {
+func (s *Service) Get(ctx context.Context, id string) (*entities.Player, error) {
 	return s.repo.Get(ctx, id)
 }
 
@@ -32,6 +32,6 @@ func (s *Service) Update(ctx context.Context, p *entities.Player) error {
 	return s.repo.Update(ctx, p)
 }
 
-func (s *Service) Delete(ctx context.Context, id int64) error {
+func (s *Service) Delete(ctx context.Context, id string) error {
 	return s.repo.Delete(ctx, id)
 }

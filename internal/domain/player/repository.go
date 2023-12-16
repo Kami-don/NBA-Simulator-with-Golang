@@ -9,11 +9,11 @@ import (
 )
 
 type RepositoryI interface {
-	Get(ctx context.Context, id int64) (*entities.Player, error)
+	Get(ctx context.Context, id string) (*entities.Player, error)
 	GetAll(ctx context.Context) ([]*entities.Player, error)
 	Create(ctx context.Context, p *entities.Player) error
 	Update(ctx context.Context, p *entities.Player) error
-	Delete(ctx context.Context, id int64) error
+	Delete(ctx context.Context, id string) error
 }
 
 type Repository struct {
@@ -24,7 +24,7 @@ func NewPlayerRepository(collection *mongo.Collection) *Repository {
 	return &Repository{collection: collection}
 }
 
-func (r *Repository) Get(ctx context.Context, id int64) (*entities.Player, error) {
+func (r *Repository) Get(ctx context.Context, id string) (*entities.Player, error) {
 	var player *entities.Player
 	err := r.collection.FindOne(ctx, bson.M{"_id": id}).Decode(&player)
 	if err != nil {
@@ -61,7 +61,7 @@ func (r *Repository) Update(ctx context.Context, p *entities.Player) error {
 	return nil
 }
 
-func (r *Repository) Delete(ctx context.Context, id int64) error {
+func (r *Repository) Delete(ctx context.Context, id string) error {
 	_, err := r.collection.DeleteOne(ctx, bson.M{"_id": id})
 	if err != nil {
 		return err
