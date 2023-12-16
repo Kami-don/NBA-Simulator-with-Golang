@@ -1,4 +1,4 @@
-APP=nba-simulator
+APP=nba_simulator
 
 install:
 	@echo "Installing..."
@@ -6,7 +6,7 @@ install:
 
 build:
 	@echo "Building..."
-	go build -o ${APP} cmd/app/main.go
+	go build -o ${APP} cmd/app/main.go -dev
 
 run: build
 	@echo "Running..."
@@ -14,4 +14,19 @@ run: build
 
 dev:
 	@echo "Running..."
-	go run cmd/app/main.go
+	go run cmd/app/main.go -dev
+
+clean:
+	@echo "Cleaning..."
+	go clean
+	rm -f ${APP}
+
+up:
+	@echo "Running docker-compose..."
+	docker-compose up -d
+
+down:
+	@echo "Stopping docker-compose..."
+	docker-compose down
+
+.PHONY: build run clean
