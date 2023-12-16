@@ -13,6 +13,7 @@ import (
 	"github.com/Furkan-Gulsen/NBA-Simulator-with-Golang/internal/domain/game"
 	"github.com/Furkan-Gulsen/NBA-Simulator-with-Golang/internal/domain/player"
 	playergame "github.com/Furkan-Gulsen/NBA-Simulator-with-Golang/internal/domain/player_game"
+	scoreboard "github.com/Furkan-Gulsen/NBA-Simulator-with-Golang/internal/domain/scoreboard"
 	"github.com/Furkan-Gulsen/NBA-Simulator-with-Golang/internal/domain/team"
 	database "github.com/Furkan-Gulsen/NBA-Simulator-with-Golang/internal/infra/db"
 	"github.com/Furkan-Gulsen/NBA-Simulator-with-Golang/internal/infra/shutdown"
@@ -93,15 +94,14 @@ func initRouter(db *database.Database, dbName string) *gin.Engine {
 	playerGameRepo := playergame.NewPlayerGameRepository(db.Collection(dbName, "player_games"))
 	playerGameService := playergame.NewService(playerGameRepo)
 
+	scoreboardService := scoreboard.NewScoreboardService(&teamService, gameService)
+
 	r.GET("/games", func(c *gin.Context) {
-		games, err := gameService.GetAll(context.Background())
-		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{
-				"error": err,
-			})
-			return
-		}
-		c.JSON(http.StatusOK, games)
+		scores := scoreboardService.GetScoreboard()
+		c.HTML(http.StatusOK, "results.tmpl", gin.H{
+			"title": "NBA Scores",
+			"games": scores,
+		})
 	})
 
 	// simulation

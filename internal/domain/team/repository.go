@@ -38,8 +38,7 @@ func (r *Repository) GetAll(tx context.Context) ([]*entities.Team, error) {
 
 func (r *Repository) Get(tx context.Context, id int) (*entities.Team, error) {
 	var team *entities.Team
-	err := r.collection.FindOne(tx, nil).Decode(&team)
-	if err != nil {
+	if err := r.collection.FindOne(tx, bson.M{"_id": id}).Decode(&team); err != nil {
 		return nil, err
 	}
 	return team, nil

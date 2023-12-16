@@ -3,58 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBA Scores</title>
+    <title>NBA Style Scores</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 20px;
+        }
+        .scoreboard {
+            width: 700px;
+            margin: 0 auto;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .scoreboard thead {
+            background-color: #0043ce;
+            color: white;
         }
         table {
-            border-collapse: collapse;
-            width: 100%;
+            margin: 0 auto;
         }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
+        .scoreboard th, .scoreboard td {
+            text-align: center;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
         }
-        th {
-            background-color: #f2f2f2;
+        .scoreboard th {
+            font-weight: normal;
         }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
+        .scoreboard tr:last-child td {
+            border-bottom: none;
         }
-        tr:hover {
-            background-color: #ddd;
+        .team-name {
+            font-weight: bold;
+        }
+        .score {
+            color: #d9534f;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .vs {
+            color: #666;
+            font-weight: bold;
+            padding: 0 10px;
         }
     </style>
 </head>
 <body>
-    <h1>{{ .title }}</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Away</th>
-                <th>Home</th>
-                <th>Score (Away)</th>
-                <th>Score (Home)</th>
-                <th>Attack Count (Away)</th>
-                <th>Attack Count (Home)</th>
-                <th>Elapsed Time</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{ range .games}}
-            <tr>
-                <td>{{ .Away }}</td>
-                <td>{{ .Home }}</td>
-                <td>{{ .AwayScore }}</td>
-                <td>{{ .HomeScore }}</td>
-                <td>{{ .AwayAttackCount }}</td>
-                <td>{{ .HomeAttackCount }}</td>
-                <td>{{ .ElapsedTime }}</td>
-            </tr>
-            {{ end}}
-        </tbody>
-    </table>
+    <div class="scoreboard">
+        <table>
+            <thead>
+                <tr>
+                    <th>Home</th>
+                    <th>Success Rate</th>
+                    <th>Score</th>
+                    <th class="vs">VS</th>
+                    <th>Score</th>
+                    <th>Success Rate</th>
+                    <th>Away</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{ range .games}}
+                    <tr>
+                        <td class="team-name" >{{ .HomeTeam }}</td>
+                        <td class="team-name" >%{{ .HomeSuccessRate }}</td>
+                        <td class="score">{{ .HomeScore }}</td>
+                        <td class="vs">-</td>
+                        <td class="score">{{ .AwayScore }}</td>
+                        <td class="team-name">%{{ .AwaySuccessRate }}</td>
+                        <td class="team-name">{{ .AwayTeam }}</td>
+                    </tr>
+                {{ end}}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

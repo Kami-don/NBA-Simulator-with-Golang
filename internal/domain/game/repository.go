@@ -9,7 +9,7 @@ import (
 )
 
 type RepositoryI interface {
-	GetAll(ctx context.Context) ([]*entities.Game, error)
+	GetAll(ctx context.Context) ([]entities.Game, error)
 	Get(ctx context.Context, id int) (*entities.Game, error)
 	Create(ctx context.Context, g *entities.Game) error
 	Update(ctx context.Context, g *entities.Game) error
@@ -24,8 +24,8 @@ func NewGameRepository(collection *mongo.Collection) *Repository {
 	return &Repository{collection: collection}
 }
 
-func (r *Repository) GetAll(tx context.Context) ([]*entities.Game, error) {
-	var games []*entities.Game
+func (r *Repository) GetAll(tx context.Context) ([]entities.Game, error) {
+	var games []entities.Game
 	cursor, err := r.collection.Find(tx, bson.M{})
 	if err != nil {
 		return nil, err

@@ -18,3 +18,12 @@ type TeamGameInfo struct {
 	AttackCount int           `json:"attack_count,omitempty" bson:"attack_count,omitempty"`
 	SuccessRate float64       `json:"success_rate,omitempty" bson:"success_rate,omitempty"`
 }
+
+type Scoreboard struct {
+	HomeScore       int     `json:"home_score"`
+	AwayScore       int     `json:"away_score"`
+	HomeTeam        string  `json:"home_team"`
+	AwayTeam        string  `json:"away_team"`
+	HomeSuccessRate float64 `json:"home_success_rate"`
+	AwaySuccessRate float64 `json:"away_success_rate"`
+}

@@ -16,7 +16,7 @@ func NewService(repo RepositoryI) *Service {
 	}
 }
 
-func (s *Service) GetAll(ctx context.Context) ([]*entities.Game, error) {
+func (s *Service) GetAll(ctx context.Context) ([]entities.Game, error) {
 	return s.repo.GetAll(ctx)
 }
 
