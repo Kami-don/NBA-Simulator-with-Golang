@@ -128,7 +128,12 @@ func (s *Simulate) UpdatePlayersGameDB(match MatchInfo, score int) {
 		return
 	}
 
-	randomPlayer := rand.Intn(5)
+	if len(playersGame) == 0 {
+		log.Fatal("No players found for game: ", match.ID)
+		return
+	}
+
+	randomPlayer := rand.Intn(len(playersGame)) // Buradaki değişiklik
 	playerGame := playersGame[randomPlayer]
 
 	if score == 2 {
@@ -221,6 +226,7 @@ func (s *Simulate) GenerateRandomGames() []int {
 	var gameIDs []int
 	for team1, team2 := range matches {
 		randomGameID := rand.Intn(1000000)
+		s.ChoosePlayers(team1, team2, randomGameID)
 		gameIDs = append(gameIDs, randomGameID)
 		s.gameService.Create(s.ctx, &entities.Game{
 			ID:          randomGameID,
@@ -240,7 +246,6 @@ func (s *Simulate) GenerateRandomGames() []int {
 				SuccessRate: 0.0,
 			},
 		})
-		s.ChoosePlayers(team1, team2, randomGameID)
 	}
 
 	return gameIDs

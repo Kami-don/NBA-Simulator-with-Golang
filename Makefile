@@ -6,7 +6,7 @@ install:
 
 build:
 	@echo "Building..."
-	go build -o ${APP} cmd/app/main.go -dev
+	go build -o ${APP} cmd/app/main.go 
 
 run: build
 	@echo "Running..."

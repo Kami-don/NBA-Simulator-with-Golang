@@ -88,10 +88,13 @@ To clean the build artifacts and the executable:
 make clean
 ```
 
+### Links
+
+Health Check: http://localhost:3000/ping
+
+![Example Page](assets/games_page.png)
+Link: http://localhost:3000/games
+
 ### Class Diagram
 
 ![Class Diagram](assets/class_diagram.png)
-
-```
-
-```

@@ -26,7 +26,7 @@ type TeamData struct {
 }
 
 func (s *Simulate) FillDBForSimulate() {
-	jsonFile, err := os.Open("cmd/app/simulation/data.json")
+	jsonFile, err := os.Open("data.json")
 	if err != nil {
 		fmt.Println("JSON Error:", err)
 		return
