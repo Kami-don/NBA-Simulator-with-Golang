@@ -92,8 +92,9 @@ make clean
 
 Health Check: http://localhost:3000/ping
 
-![Example Page](assets/games_page.png)
 Link: http://localhost:3000/games
+
+![Example Page](assets/games_page.png)
 
 ### Class Diagram
 
