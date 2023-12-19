@@ -5,7 +5,7 @@ The NBA Simulator is a Go-based application designed to simulate various aspects
 ## Features
 
 - Docker Integration: Easy deployment and environment management using Docker.
-- DDD: Domain Driven Degign
+- DDD: Domain Driven Design
 
 ### Getting Started
 
